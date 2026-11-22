@@ -1,0 +1,7 @@
+interface:
+  display_name: "XXTouch Script"
+  short_description: "Develop XXTouch scripts and XXTLanControl.lua integrations."
+  default_prompt: "Use $xxtouch-script to develop or review XXTouch scripts, obtaining and using XXTLanControl.lua when control-center communication is needed."
+
+policy:
+  allow_implicit_invocation: true

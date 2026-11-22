@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "models": {
+    "captcha-slider": {
+      "module": "captcha_recognizer",
+      "status": "downloadable",
+      "description": "Preferred slider captcha gap model; 640x640 input with preprocessing handled by the wrapper",
+      "source": "https://github.com/chenwei-zhao/captcha-recognizer",
+      "revision": "1bbabc16352e7c16da64de58fd5b52e8889fb6c7",
+      "constructor_options": {
+        "type": "slider"
+      },
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: device download, SHA256, loading, and inference on input without a gap passed; real slider captcha accuracy was not evaluated.",
+      "files": [
+        {
+          "path": "slider.onnx",
+          "url": "https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/1bbabc16352e7c16da64de58fd5b52e8889fb6c7/captcha_recognizer/models/slider.onnx",
+          "size": 40533656,
+          "sha256": "caabd60274af1748d9bc8d5c3b2231521000f4d3c10608485ce251503bb97d9a"
+        }
+      ]
+    },
+    "ddddocr-old": {
+      "module": "ddddocr",
+      "status": "downloadable",
+      "description": "Default ddddocr text captcha OCR model and matching character set",
+      "source": "https://github.com/86maid/ddddocr",
+      "revision": "cc249cc4d79c6d609d808c540689f0187257a74f",
+      "constructor_options": {
+        "ocr": true,
+        "old": true
+      },
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: device download, SHA256, and OCR inference passed; sample 1234, confidence about 0.99994.",
+      "files": [
+        {
+          "path": "common_old.onnx",
+          "url": "https://raw.githubusercontent.com/86maid/ddddocr/cc249cc4d79c6d609d808c540689f0187257a74f/model/common_old.onnx",
+          "size": 13606051,
+          "sha256": "b8f2ad9cbc1f2e3922a6cb9459e30824e7e2467f3fb4fd61420640e34ea0bf68"
+        },
+        {
+          "path": "common_old.json",
+          "url": "https://raw.githubusercontent.com/86maid/ddddocr/cc249cc4d79c6d609d808c540689f0187257a74f/model/common_old.json",
+          "size": 123036,
+          "sha256": "86f15a38b0e967add9abca516260fd8eb48db014a4c52258ed90c561ffe2b964"
+        }
+      ]
+    },
+    "ddddocr-beta": {
+      "module": "ddddocr",
+      "status": "downloadable",
+      "description": "Newer ddddocr text captcha OCR model and matching character set",
+      "source": "https://github.com/86maid/ddddocr",
+      "revision": "cc249cc4d79c6d609d808c540689f0187257a74f",
+      "constructor_options": {
+        "ocr": true,
+        "beta": true
+      },
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: device download, SHA256, and OCR inference passed; sample 1234, confidence about 0.99923.",
+      "files": [
+        {
+          "path": "common.onnx",
+          "url": "https://raw.githubusercontent.com/86maid/ddddocr/cc249cc4d79c6d609d808c540689f0187257a74f/model/common.onnx",
+          "size": 54088400,
+          "sha256": "33b5cd351ee94e73a6bf8fa18c415ed8b819b3ffd342e267c30d8ad8334e34e8"
+        },
+        {
+          "path": "common.json",
+          "url": "https://raw.githubusercontent.com/86maid/ddddocr/cc249cc4d79c6d609d808c540689f0187257a74f/model/common.json",
+          "size": 123037,
+          "sha256": "093a9ba5dbfea32e3a76c2149103fc68cfda8405401e30286a68254b6cb67c51"
+        }
+      ]
+    },
+    "ddddocr-det": {
+      "module": "ddddocr",
+      "status": "downloadable",
+      "description": "ddddocr detection model for captcha images",
+      "source": "https://github.com/86maid/ddddocr",
+      "revision": "cc249cc4d79c6d609d808c540689f0187257a74f",
+      "constructor_options": {
+        "det": true
+      },
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: device download, SHA256, loading, and inference with no detected targets passed; detection accuracy was not evaluated.",
+      "files": [
+        {
+          "path": "common_det.onnx",
+          "url": "https://raw.githubusercontent.com/86maid/ddddocr/cc249cc4d79c6d609d808c540689f0187257a74f/model/common_det.onnx",
+          "size": 20127694,
+          "sha256": "6faa8ea85a8c1a634e5050c4a138fca10f30194e0d7abbe9ade1fcd423af6ed6"
+        }
+      ]
+    },
+    "ppocrv5-mobile-ncnn": {
+      "module": "paddleocr_ncnn",
+      "status": "downloadable",
+      "description": "Upstream-converted PP-OCRv5 mobile NCNN DET/REC with dynamic-input adaptation; uses the bundled paddleocr_ncnn_dict",
+      "source": "https://github.com/nihui/ncnn-android-ppocrv5",
+      "revision": "671ac4a72299a86ddee160131ba88fed748df425",
+      "constructor_options": {},
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: device download, SHA256, cache reuse, and full-image recognition passed; sample XXTouch 2026, confidence about 0.979.",
+      "files": [
+        {
+          "path": "PP_OCRv5_mobile_det.ncnn.param",
+          "url": "https://raw.githubusercontent.com/nihui/ncnn-android-ppocrv5/671ac4a72299a86ddee160131ba88fed748df425/app/src/main/assets/PP_OCRv5_mobile_det.ncnn.param",
+          "size": 24821,
+          "sha256": "358f459680ae0e7a73e477469e529ce116f68c629019ec7a0b6457d2d9117934"
+        },
+        {
+          "path": "PP_OCRv5_mobile_det.ncnn.bin",
+          "url": "https://raw.githubusercontent.com/nihui/ncnn-android-ppocrv5/671ac4a72299a86ddee160131ba88fed748df425/app/src/main/assets/PP_OCRv5_mobile_det.ncnn.bin",
+          "size": 2357216,
+          "sha256": "857a96bc963725105b78a178dfcc3c0c3db1a7b9eef32244367b2cb105ccf60b"
+        },
+        {
+          "path": "PP_OCRv5_mobile_rec.ncnn.param",
+          "url": "https://raw.githubusercontent.com/nihui/ncnn-android-ppocrv5/671ac4a72299a86ddee160131ba88fed748df425/app/src/main/assets/PP_OCRv5_mobile_rec.ncnn.param",
+          "size": 20031,
+          "sha256": "f52a6586ac3338d8c350db0c9f3c55ff2ecd3763327f9bc7f0efc091f8a63e74"
+        },
+        {
+          "path": "PP_OCRv5_mobile_rec.ncnn.bin",
+          "url": "https://raw.githubusercontent.com/nihui/ncnn-android-ppocrv5/671ac4a72299a86ddee160131ba88fed748df425/app/src/main/assets/PP_OCRv5_mobile_rec.ncnn.bin",
+          "size": 8242276,
+          "sha256": "49d9907a55ba20fa6637f9f788f66ab00793bc8ce57a733a09dbe86b9a2e3db0"
+        }
+      ]
+    },
+    "paddleocr-onnx-custom": {
+      "module": "paddleocr_onnx",
+      "status": "needs-model",
+      "description": "Other custom PaddleOCR ONNX models requiring matching REC, dictionary, and optional DET",
+      "source": "https://github.com/PaddlePaddle/PaddleOCR",
+      "revision": "developer-supplied",
+      "reason": "Chinese and English presets are available as ppocrv5-onnx-chinese / ppocrv5-onnx-english. For other models, use --catalog with a new ID and matching rec.onnx / dict.txt; full-image recognition also needs det.onnx. Training weights are not converted automatically.",
+      "files": []
+    },
+    "yolo-onnx-custom": {
+      "module": "yolo_onnx",
+      "status": "needs-model",
+      "description": "Requires exported ONNX, matching labels, and any external data; check the task, output layout, and profile",
+      "source": "https://github.com/ultralytics/ultralytics",
+      "revision": "developer-supplied",
+      "reason": "Requires exported ONNX, matching labels, and any external data; check the task, output layout, and profile. No verified preset bundle is available. Use --catalog with a new ID and complete file list; training weights are not converted automatically.",
+      "files": []
+    },
+    "yolo-coreml-custom": {
+      "module": "yolo_coreml",
+      "status": "needs-model",
+      "description": "Requires .mlpackage/.mlmodel and labels; compile to .mlmodelc on the device before use",
+      "source": "https://github.com/ultralytics/ultralytics",
+      "revision": "developer-supplied",
+      "reason": "Requires .mlpackage/.mlmodel and labels; compile to .mlmodelc on the device before use. No verified preset bundle is available. Use --catalog with a new ID and complete file list; training weights are not converted automatically.",
+      "files": []
+    },
+    "yolo-ncnn-custom": {
+      "module": "yolo_ncnn",
+      "status": "needs-model",
+      "description": "Requires matching .param/.bin and labels; check input/output names, task, and profile",
+      "source": "https://github.com/Tencent/ncnn",
+      "revision": "developer-supplied",
+      "reason": "Requires matching .param/.bin and labels; check input/output names, task, and profile. No verified preset bundle is available. Use --catalog with a new ID and complete file list; training weights are not converted automatically.",
+      "files": []
+    },
+    "ppocrv5-onnx-chinese": {
+      "module": "paddleocr_onnx",
+      "status": "downloadable",
+      "description": "Exported PP-OCRv5 Chinese ONNX DET/REC and matching dictionary from monkt/paddleocr-onnx, ready for use",
+      "source": "https://huggingface.co/monkt/paddleocr-onnx",
+      "revision": "7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65",
+      "constructor_options": {
+        "use_space_char": true
+      },
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: generated Lua download code and SHA256 verification passed on device. Single-line and full-image OCR both recognized \"中文测试 2026\", with confidence about 0.941 / 0.957 respectively.",
+      "files": [
+        {
+          "path": "det.onnx",
+          "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/detection/v5/det.onnx?download=true",
+          "size": 88030804,
+          "sha256": "61824840edf6e74581898930b8091b1b2318f4b2705a2e8a40ad3de7ac480133"
+        },
+        {
+          "path": "rec.onnx",
+          "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/languages/chinese/rec.onnx?download=true",
+          "size": 84468836,
+          "sha256": "26fa4f47060f58e25962b9af6beaee05c8182b90e026c4ecc6db165d9dfdc38a"
+        },
+        {
+          "path": "dict.txt",
+          "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/languages/chinese/dict.txt?download=true",
+          "size": 74012,
+          "sha256": "d1979e9f794c464c0d2e0b70a7fe14dd978e9dc644c0e71f14158cdf8342af1b"
+        }
+      ]
+    },
+    "ppocrv5-onnx-english": {
+      "module": "paddleocr_onnx",
+      "status": "downloadable",
+      "description": "Exported PP-OCRv5 English ONNX DET/REC and matching dictionary from monkt/paddleocr-onnx, ready for use",
+      "source": "https://huggingface.co/monkt/paddleocr-onnx",
+      "revision": "7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65",
+      "constructor_options": {
+        "use_space_char": true
+      },
+      "verification": "2026/10/14, iOS 17.1.2 / XXTouch 1.3.8-20261013103600: generated Lua download code and SHA256 verification passed on device. Full-image OCR recognized \"XXTouch 2026\" at about 0.983 confidence; single-line OCR returned \"xXTouch 2026\" at about 0.969, with a first-letter case difference.",
+      "files": [
+        {
+          "path": "det.onnx",
+          "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/detection/v5/det.onnx?download=true",
+          "size": 88030804,
+          "sha256": "61824840edf6e74581898930b8091b1b2318f4b2705a2e8a40ad3de7ac480133"
+        },
+        {
+          "path": "rec.onnx",
+          "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/languages/english/rec.onnx?download=true",
+          "size": 7830888,
+          "sha256": "4e16deb22c4da6468bdca539b2cd3c8687825538b67109177c47d359ab994cd7"
+        },
+        {
+          "path": "dict.txt",
+          "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/languages/english/dict.txt?download=true",
+          "size": 1416,
+          "sha256": "e025a66d31f327ba0c232e03f407ae8d105e1e709e7ccb3f408aa778c24e70d6"
+        }
+      ]
+    }
+  }
+}

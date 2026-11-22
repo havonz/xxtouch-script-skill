@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "source_revision": "809866463388628b4f2b6444a9b4e50be501f8b8",
+  "modules": {
+    "captcha_recognizer": {
+      "file": "captcha_recognizer.lua",
+      "dependencies": [
+        "yolo_backend_common"
+      ],
+      "runtime_modules": [
+        "onnxruntime",
+        "image.cv"
+      ],
+      "reference": "references/third-party/captcha_recognizer.md",
+      "sha256": "3183789b37bafb4abe5cc854ebccf3ae28a4d0eb8c6db25ca8279a7041c92e25"
+    },
+    "paddleocr_ncnn_dict": {
+      "file": "paddleocr_ncnn_dict.lua",
+      "dependencies": [],
+      "runtime_modules": [],
+      "reference": "references/third-party/vision-modules.md",
+      "sha256": "81d54090b0f382beb3662269daa62a00537f957a15434f05373da9ae0a04cde4"
+    },
+    "paddleocr_ncnn": {
+      "file": "paddleocr_ncnn.lua",
+      "dependencies": [
+        "yolo_backend_common",
+        "paddleocr_ncnn_dict"
+      ],
+      "runtime_modules": [
+        "ncnn"
+      ],
+      "reference": "references/third-party/paddleocr_ncnn.md",
+      "sha256": "a8c04433b35e91a05b8c701ca8a26969fbaf0e7db506f914e7c7ffc0dbfc3c93"
+    },
+    "paddleocr_onnx": {
+      "file": "paddleocr_onnx.lua",
+      "dependencies": [
+        "yolo_backend_common"
+      ],
+      "runtime_modules": [
+        "onnxruntime",
+        "image.cv"
+      ],
+      "reference": "references/third-party/paddleocr_onnx.md",
+      "sha256": "6784483fec1854bca7410fec2f0a8f1f0520359ec3d72ef5979a573bcadfa9b6"
+    },
+    "yolo_backend_common": {
+      "file": "yolo_backend_common.lua",
+      "dependencies": [],
+      "runtime_modules": [],
+      "reference": "references/third-party/vision-modules.md",
+      "sha256": "fe0301ebb4bf00ba0fd66c4cea81d471f75e4e72a8bdc8e3f38deb47359f739c"
+    },
+    "yolo_coreml": {
+      "file": "yolo_coreml.lua",
+      "dependencies": [
+        "yolo_backend_common",
+        "yolo_profile_runtime",
+        "yolo_tracker"
+      ],
+      "runtime_modules": [
+        "coreml (global)",
+        "path"
+      ],
+      "reference": "references/third-party/yolo_coreml.md",
+      "sha256": "250609120580a7ca79ce087da3404793e00efed165498e75e7e7229f593aab5f"
+    },
+    "yolo_ncnn": {
+      "file": "yolo_ncnn.lua",
+      "dependencies": [
+        "yolo_backend_common",
+        "yolo_profile_runtime",
+        "yolo_tracker"
+      ],
+      "runtime_modules": [
+        "ncnn"
+      ],
+      "reference": "references/third-party/yolo_ncnn.md",
+      "sha256": "a562796aff6ce52322c22a5eb84f48e66dc02726fcd14e3fe19a0ce05122e694"
+    },
+    "yolo_onnx": {
+      "file": "yolo_onnx.lua",
+      "dependencies": [
+        "yolo_backend_common",
+        "yolo_profile_runtime",
+        "yolo_tracker"
+      ],
+      "runtime_modules": [
+        "onnxruntime"
+      ],
+      "reference": "references/third-party/yolo_onnx.md",
+      "sha256": "394ee4d122bc59815b1aeb875b74f6b4f8bd8138d919b286f253d04fcf4c0432"
+    },
+    "yolo_profile_runtime": {
+      "file": "yolo_profile_runtime.lua",
+      "dependencies": [
+        "yolo_backend_common"
+      ],
+      "runtime_modules": [],
+      "reference": "references/third-party/yolo_profile_runtime.md",
+      "sha256": "a235f7dca4b2ded7793f1c5f831ac85db237a71ee6f76128bd56688128034d05"
+    },
+    "yolo_tracker": {
+      "file": "yolo_tracker.lua",
+      "dependencies": [
+        "yolo_backend_common"
+      ],
+      "runtime_modules": [],
+      "reference": "references/third-party/yolo_tracker.md",
+      "sha256": "f789ac5fb852f0375265f2163a76ecd8d119bfd8d8694a9858ad6e29f165dd03"
+    },
+    "ddddocr": {
+      "file": "ddddocr.lua",
+      "dependencies": [
+        "yolo_backend_common"
+      ],
+      "runtime_modules": [
+        "onnxruntime",
+        "image.cv"
+      ],
+      "reference": "references/third-party/ddddocr.md",
+      "sha256": "b6f24028c246dd4db79cf98ea4baf311585f48773ee4e592b787148cb0f6dee1"
+    }
+  }
+}
