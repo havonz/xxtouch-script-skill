@@ -1,0 +1,72 @@
+name: Release Skill
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-xxtouch-script
+  cancel-in-progress: false
+
+jobs:
+  version:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.stamp.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Stamp the Skill and tag the same commit
+        id: stamp
+        run: |
+          set -euo pipefail
+          file=skills/xxtouch-script/VERSION
+          version=""
+          if [[ -f "$file" ]]; then version=$(cat "$file"); fi
+          if [[ ! "$version" =~ ^v[0-9]{12}$ ]] || [[ "$(git tag --points-at HEAD --list "$version")" != "$version" ]]; then
+            version=$(date -u '+v%Y%m%d%H%M')
+            if git show-ref --verify --quiet "refs/tags/$version"; then
+              echo "Version $version already exists. Retry in the next UTC minute." >&2
+              exit 1
+            fi
+            printf '%s\n' "$version" > "$file"
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- "$file"
+            if ! git diff --cached --quiet; then git commit -m "Release $version"; fi
+            git tag "$version"
+            git push --atomic origin HEAD:refs/heads/main "refs/tags/$version"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: version
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ needs.version.outputs.version }}
+      - name: Package the tagged Skill
+        run: |
+          set -euo pipefail
+          git archive --format=zip --prefix=xxtouch-script/ -o xxtouch-script.zip HEAD:skills/xxtouch-script
+          test "$(unzip -p xxtouch-script.zip xxtouch-script/VERSION)" = "$VERSION"
+      - name: Publish the ZIP on GitHub Releases
+        run: |
+          set -euo pipefail
+          if ! gh release view "$VERSION" --json isDraft > "$RUNNER_TEMP/release.json"; then
+            gh release create "$VERSION" --verify-tag --draft --title "$VERSION" --generate-notes
+          elif jq -e '.isDraft == false' "$RUNNER_TEMP/release.json" >/dev/null; then
+            gh release view "$VERSION" --json assets --jq '.assets[].name' | grep -Fx xxtouch-script.zip
+            exit 0
+          fi
+          gh release upload "$VERSION" xxtouch-script.zip --clobber
+          gh release edit "$VERSION" --draft=false
